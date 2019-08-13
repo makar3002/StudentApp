@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--Это меню используется только для отображения в превью разметки. Настоящее задается программно в MainActivity-->
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/menu_events"
+        android:title=""
+        android:icon="@drawable/ic_vector_main" />
+
+    <item
+        android:id="@+id/menu_calendar"
+        android:title=""
+        android:icon="@drawable/ic_vector_calendar" />
+
+    <item
+        android:id="@+id/menu_partner"
+        android:title=""
+        android:icon="@drawable/ic_vector_partner" />
+
+    <item
+        android:id="@+id/menu_profile"
+        android:title=""
+        android:icon="@drawable/ic_vector_profile" />
+</menu>

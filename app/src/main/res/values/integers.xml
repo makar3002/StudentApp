@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<resources
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <integer name="com_vk_sdk_AppId"
+        tools:ignore="UnusedResources" >7092295</integer>
+</resources>

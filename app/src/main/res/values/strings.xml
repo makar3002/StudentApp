@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">StudentAppKotlin</string>
+    <string name="update_task_download_complete_and_need_relaunch">Обновление скачано и готово к установке. Приступить?</string>
+    <string name="key_settings">studentapp_settings</string>
+    <string name="firstName">firstName</string>
+    <string name="secondName">secondName</string>
+    <string name="institute">institute</string>
+    <string name="course">course</string>
+    <string name="group">group</string>
+    <string name="recordBook">recordBook</string>
+    <string name="sign_in_error">При логине что-то пошло не так</string>
+
+
+</resources>
