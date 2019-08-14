@@ -17,10 +17,6 @@ class AuthInteractor (private val repository: IAuthRepository) {
         }
     }
 
-    fun isUserLogged(): Boolean {
-        return repository.isUserLoaded()
-    }
-
     suspend fun authUser(user: UserModel){
         repository.authUser(user)
     }

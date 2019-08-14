@@ -42,13 +42,12 @@ class UserService(private val prefs: SharedPreferences,
     }
 
     suspend fun loginWithVk(firebaseApi: ApiService, res: VKAccessToken) {
-        val updatedUser = firebaseApi.getUser(AuthRequest(res.userId.toString(), UserTokenModel.TokenType.VK))
+        firebaseApi.getUser(AuthRequest(res.userId.toString(), UserTokenModel.TokenType.VK))
         userToken = UserTokenModel(res.userId.toString(), UserTokenModel.TokenType.VK)
         editor.putString(SAVED_USER, Gson().toJson(userToken)).apply()
     }
 
-    suspend fun loginWithoutVk(firebaseApi: ApiService, userId: String) {
-        val updatedUser = firebaseApi.getUser(AuthRequest(userId, UserTokenModel.TokenType.NotVK))
+    suspend fun loginWithoutVk(userId: String) {
         userToken = UserTokenModel(userId, UserTokenModel.TokenType.NotVK)
         editor.putString(SAVED_USER, Gson().toJson(userToken)).apply()
     }

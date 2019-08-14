@@ -24,7 +24,7 @@ class SplashFragment : Fragment(), CoroutineScope {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+        (activity as MainActivity?)?.supportActionBar?.hide()
         updateJob = launch {
             delay(1500)
 
@@ -34,6 +34,7 @@ class SplashFragment : Fragment(), CoroutineScope {
 
             (activity as MainActivity?)?.apply {
                 openScreen(ProfileHostFragment.TAG, isAddToBackStack = false)
+                supportActionBar?.show()
                 showNavigationBar(true)
             }
         }

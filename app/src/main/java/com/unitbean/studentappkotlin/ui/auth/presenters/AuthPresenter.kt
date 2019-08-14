@@ -1,18 +1,18 @@
 package com.unitbean.studentappkotlin.ui.auth.presenters
 
-import com.google.android.material.snackbar.Snackbar
 import com.unitbean.studentappkotlin.di.DIManager
 import com.unitbean.studentappkotlin.ui.auth.interactors.AuthInteractor
 import com.unitbean.studentappkotlin.ui.auth.views.AuthView
 import com.unitbean.studentappkotlin.utils.repository.model.UserModel
-import kotlinx.android.synthetic.main.fragment_auth_first.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import moxy.InjectViewState
 import moxy.MvpPresenter
 import javax.inject.Inject
 import kotlin.coroutines.CoroutineContext
+
 @InjectViewState
 class AuthPresenter : MvpPresenter<AuthView>(), CoroutineScope {
 
@@ -32,11 +32,11 @@ class AuthPresenter : MvpPresenter<AuthView>(), CoroutineScope {
     fun loadProfile() {
         launch {
             try {
-                val user = interactor.loadProfile()
+                val user = withContext(Dispatchers.Default) {interactor.loadProfile()}
                 viewState.onProfileLoaded(user)
             } catch (e: Exception) {
                 if (e == IllegalStateException("User not loaded")) {
-
+                    viewState.onProfileLoaded(UserModel("", "", "", "", "", "", ""))
                 }
                 //LogUtils.e(TAG, e.message, e)
             }
@@ -46,7 +46,7 @@ class AuthPresenter : MvpPresenter<AuthView>(), CoroutineScope {
     fun authUser (user: UserModel){
         launch {
             try {
-                interactor.authUser(user)
+                withContext(Dispatchers.Default){interactor.authUser(user)}
             } catch (e: Exception){
 
             }

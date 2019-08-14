@@ -3,11 +3,10 @@ package com.unitbean.studentappkotlin.utils.repository
 import com.google.android.gms.tasks.Tasks
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.SetOptions
-import com.unitbean.studentappkotlin.utils.repository.model.UserTokenModel
 import com.unitbean.studentappkotlin.utils.repository.requests.AuthRequest
 import com.unitbean.studentappkotlin.utils.repository.responses.AuthResponse
 
-class ApiService() {
+class ApiService {
 
     val dataBase: FirebaseFirestore by lazy {
         FirebaseFirestore.getInstance()
@@ -19,13 +18,8 @@ class ApiService() {
             .document(authRequest.studentId)
             .get()
             .addOnSuccessListener { document ->
-                if (document.exists()) {
-                    if (authRequest.type == UserTokenModel.TokenType.NotVK){
-                        deleteUser(authRequest.studentId)
-                        registerUser(authRequest.studentId)
-                    }
-                }
-                else registerUser(authRequest.studentId)
+                if (!document.exists()) registerUser(authRequest.studentId)
+                //Log.d(TAG, "DocumentSnapshot successfully written!")
             }
             .addOnFailureListener { exception ->
                 //Log.w(TAG, "Error getting documents: ", exception)
@@ -35,13 +29,7 @@ class ApiService() {
             .document(authRequest.studentId)
             .get()
             .addOnSuccessListener { document ->
-                if (document != null) {
-                    if (authRequest.type == UserTokenModel.TokenType.NotVK){
-                        deleteUser(authRequest.studentId)
-                        registerUser(authRequest.studentId)
-                    }
-                }
-                else registerUser(authRequest.studentId)
+                //Log.d(TAG, "DocumentSnapshot successfully written!")
             }
             .addOnFailureListener { exception ->
                 //Log.w(TAG, "Error getting documents: ", exception)
@@ -61,7 +49,7 @@ class ApiService() {
         )
         dataBase.collection("students")
             .document(studentId)
-            .set(student)
+            .set(student, SetOptions.merge())
             .addOnSuccessListener {
                     //Log.d(TAG, "DocumentSnapshot successfully written!")
             }
@@ -85,7 +73,7 @@ class ApiService() {
             "group" to group,
             "recordBook" to recordBook
         )
-        if (studentId != null) dataBase.collection("students")
+        if (studentId != null && studentId != "") dataBase.collection("students")
             .document(studentId)
             .set(student)
             .addOnSuccessListener {
@@ -93,7 +81,7 @@ class ApiService() {
             }
             .addOnFailureListener {
                 //e -> Log.w(TAG, "Error writing document", e)
-            }.isSuccessful
+            }
 
     }
     fun deleteUser(studentId: String) {

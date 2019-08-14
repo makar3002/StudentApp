@@ -35,7 +35,6 @@ class ProfileFragment : MvpAppCompatFragment(), ProfileView, View.OnClickListene
     }
 
     override fun onProfileLoaded(user: UserModel) {
-        //Snackbar.make(cl_profile_fragment, user.id+"/"+user.firstName+"/"+user.lastName, Snackbar.LENGTH_SHORT).show()
         if (user.firstName == "" || user.lastName == "" || user.institute == "" || user.course == "" || user.group == "" || user.recordBook == "") {
             (requireActivity() as MainActivity).apply{
                 openScreen(AuthFragment.TAG, isAddToBackStack = false)

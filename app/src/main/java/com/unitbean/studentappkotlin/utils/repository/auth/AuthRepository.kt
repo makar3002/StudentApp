@@ -32,6 +32,7 @@ class AuthRepository(private val apiService: ApiService,
         } else {
             val userId: String =
                 user.firstName + user.lastName + user.institute + user.course + user.group + user.recordBook
+            userService.loginWithoutVk(userId)
             userService.authUser(
                 apiService,
                 UserModel(

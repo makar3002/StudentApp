@@ -14,7 +14,7 @@ class MainRepository(private val apiService: ApiService,
     }
 
     override suspend fun loginWithoutVk(userId: String) {
-        userService.loginWithoutVk(apiService, userId)
+        userService.loginWithoutVk(userId)
     }
 
     override fun saveUser(user: UserModel) {
