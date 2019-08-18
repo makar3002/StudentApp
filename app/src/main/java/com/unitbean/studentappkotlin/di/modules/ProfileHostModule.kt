@@ -1,10 +1,10 @@
 package com.unitbean.studentappkotlin.di.modules
 
-import com.unitbean.studentappkotlin.utils.repository.profileHost.IProfileHostRepository
+import com.unitbean.studentappkotlin.repository.profileHost.IProfileHostRepository
 import com.unitbean.studentappkotlin.di.scopes.ProfileHostScope
 import com.unitbean.studentappkotlin.ui.profileHost.interactors.ProfileHostInteractor
-import com.unitbean.studentappkotlin.utils.repository.UserService
-import com.unitbean.studentappkotlin.utils.repository.profileHost.ProfileHostRepository
+import com.unitbean.studentappkotlin.repository.UserService
+import com.unitbean.studentappkotlin.repository.profileHost.ProfileHostRepository
 import dagger.Module
 import dagger.Provides
 

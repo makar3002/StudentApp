@@ -10,6 +10,8 @@ object DIManager {
     private var profileSubcomponent: ProfileSubcomponent? = null
     private var profileHostSubcomponent: ProfileHostSubcomponent? = null
     private var authSubcomponent: AuthSubcomponent? = null
+    private var lessonsScheduleSubcomponent: LessonsScheduleSubcomponent? = null
+
 
     fun getMainSubcomponent(): MainSubcomponent {
         if (mainSubcomponent == null) {
@@ -20,6 +22,17 @@ object DIManager {
 
     fun clearMainSubcomponent() {
         mainSubcomponent = null
+    }
+
+    fun getLessonsScheduleSubcomponent(): LessonsScheduleSubcomponent {
+        if (lessonsScheduleSubcomponent == null) {
+            lessonsScheduleSubcomponent = appComponent.lessonsSchedule(LessonsScheduleModule())
+        }
+        return lessonsScheduleSubcomponent ?: throw IllegalStateException("$lessonsScheduleSubcomponent must not be null")
+    }
+
+    fun clearLessonsScheduleSubcomponent() {
+        lessonsScheduleSubcomponent = null
     }
 
     fun getProfileSubcomponent(): ProfileSubcomponent {

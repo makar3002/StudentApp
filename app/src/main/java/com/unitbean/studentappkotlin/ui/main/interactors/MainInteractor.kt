@@ -1,7 +1,7 @@
 package com.unitbean.studentappkotlin.ui.main.interactors
 
-import com.unitbean.studentappkotlin.utils.repository.model.UserTokenModel
-import com.unitbean.studentappkotlin.utils.repository.main.IMainRepository
+import com.unitbean.studentappkotlin.utils.model.UserTokenModel
+import com.unitbean.studentappkotlin.repository.main.IMainRepository
 import com.vk.api.sdk.auth.VKAccessToken
 
 class MainInteractor(val repository: IMainRepository) {

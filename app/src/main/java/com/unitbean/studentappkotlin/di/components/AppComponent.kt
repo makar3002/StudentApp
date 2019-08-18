@@ -18,6 +18,7 @@ interface AppComponent {
     fun profileHost(module: ProfileHostModule): ProfileHostSubcomponent
     fun profile(module: ProfileModule): ProfileSubcomponent
     fun auth(module: AuthModule): AuthSubcomponent
+    fun lessonsSchedule(module: LessonsScheduleModule): LessonsScheduleSubcomponent
 
     @Component.Builder
     interface Builder {

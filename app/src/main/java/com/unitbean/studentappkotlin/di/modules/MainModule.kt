@@ -2,10 +2,10 @@ package com.unitbean.studentappkotlin.di.modules
 
 import com.unitbean.studentappkotlin.di.scopes.MainScope
 import com.unitbean.studentappkotlin.ui.main.interactors.MainInteractor
-import com.unitbean.studentappkotlin.utils.repository.ApiService
-import com.unitbean.studentappkotlin.utils.repository.UserService
-import com.unitbean.studentappkotlin.utils.repository.main.IMainRepository
-import com.unitbean.studentappkotlin.utils.repository.main.MainRepository
+import com.unitbean.studentappkotlin.repository.ApiService
+import com.unitbean.studentappkotlin.repository.UserService
+import com.unitbean.studentappkotlin.repository.main.IMainRepository
+import com.unitbean.studentappkotlin.repository.main.MainRepository
 import dagger.Module
 import dagger.Provides
 

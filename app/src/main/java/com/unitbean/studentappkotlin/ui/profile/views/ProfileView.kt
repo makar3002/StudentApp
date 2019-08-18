@@ -1,6 +1,6 @@
 package com.unitbean.studentappkotlin.ui.profile.views
 
-import com.unitbean.studentappkotlin.utils.repository.model.UserModel
+import com.unitbean.studentappkotlin.utils.model.UserModel
 import moxy.MvpView
 import moxy.viewstate.strategy.OneExecutionStateStrategy
 import moxy.viewstate.strategy.StateStrategyType
@@ -9,4 +9,5 @@ import moxy.viewstate.strategy.StateStrategyType
 interface ProfileView : MvpView {
     fun onProfileLoaded(user: UserModel)
     fun onLogout()
+    fun showProgress(isShow: Boolean)
 }

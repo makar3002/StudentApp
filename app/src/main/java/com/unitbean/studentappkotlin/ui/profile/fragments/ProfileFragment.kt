@@ -4,16 +4,12 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.Fragment
-import com.google.android.material.snackbar.Snackbar
 import com.unitbean.studentappkotlin.R
 import com.unitbean.studentappkotlin.ui.auth.fragments.AuthFragment
 import com.unitbean.studentappkotlin.ui.main.activities.MainActivity
 import com.unitbean.studentappkotlin.ui.profile.presenters.ProfilePresenter
 import com.unitbean.studentappkotlin.ui.profile.views.ProfileView
-import com.unitbean.studentappkotlin.utils.repository.model.UserModel
-import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.fragment_auth_first.*
+import com.unitbean.studentappkotlin.utils.model.UserModel
 import kotlinx.android.synthetic.main.fragment_profile.*
 import moxy.MvpAppCompatFragment
 import moxy.presenter.InjectPresenter
@@ -29,6 +25,7 @@ class ProfileFragment : MvpAppCompatFragment(), ProfileView, View.OnClickListene
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        presenter.showProgress(true)
         b_profile_logout.setOnClickListener(this)
 
         presenter.loadProfile()
@@ -41,6 +38,7 @@ class ProfileFragment : MvpAppCompatFragment(), ProfileView, View.OnClickListene
                 showNavigationBar(false)
             }
         } else {
+            presenter.showProgress(false)
             tv_profile_firstname.text = user.firstName
             tv_profile_lastname.text = user.lastName
             tv_profile_institute.text = user.institute
@@ -57,6 +55,27 @@ class ProfileFragment : MvpAppCompatFragment(), ProfileView, View.OnClickListene
     override fun onClick(v: View?) {
         when (v) {
             b_profile_logout -> presenter.logout()
+        }
+    }
+    override fun showProgress(isShow: Boolean) {
+        if (isShow) {
+            b_profile_logout.visibility = View.GONE
+            tv_profile_firstname.visibility = View.GONE
+            tv_profile_lastname.visibility = View.GONE
+            tv_profile_institute.visibility = View.GONE
+            tv_profile_course.visibility = View.GONE
+            tv_profile_group.visibility = View.GONE
+            tv_profile_recordBook.visibility = View.GONE
+            pb_profile_progress.visibility = View.VISIBLE
+        } else {
+            b_profile_logout.visibility = View.VISIBLE
+            tv_profile_firstname.visibility = View.VISIBLE
+            tv_profile_lastname.visibility = View.VISIBLE
+            tv_profile_institute.visibility = View.VISIBLE
+            tv_profile_course.visibility = View.VISIBLE
+            tv_profile_group.visibility = View.VISIBLE
+            tv_profile_recordBook.visibility = View.VISIBLE
+            pb_profile_progress.visibility = View.GONE
         }
     }
 

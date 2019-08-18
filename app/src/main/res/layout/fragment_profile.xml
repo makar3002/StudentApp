@@ -98,6 +98,16 @@
                     app:layout_constraintTop_toBottomOf="@id/tv_profile_group"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintRight_toRightOf="parent"/>
+            <ProgressBar
+                    android:id="@+id/pb_profile_progress"
+                    android:layout_width="56dp"
+                    android:layout_height="56dp"
+                    android:layout_marginTop="30dp"
+                    android:visibility="gone"
+                    app:layout_constraintTop_toBottomOf="@id/tv_profile_recordBook"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    tools:visibility="gone"/>
             <Button
                     android:text="Выйти"
                     android:layout_width="wrap_content"
@@ -105,7 +115,7 @@
                     tools:layout_editor_absoluteY="184dp"
                     tools:layout_editor_absoluteX="16dp"
                     android:id="@+id/b_profile_logout"
-                    app:layout_constraintTop_toBottomOf="@id/tv_profile_recordBook"
+                    app:layout_constraintTop_toBottomOf="@id/pb_profile_progress"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintRight_toRightOf="parent"
                     app:layout_constraintBottom_toBottomOf="parent"/>

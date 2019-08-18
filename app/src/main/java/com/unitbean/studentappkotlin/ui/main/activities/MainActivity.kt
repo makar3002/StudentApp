@@ -10,6 +10,7 @@ import com.unitbean.studentappkotlin.ui.auth.fragments.AuthFragment
 import com.unitbean.studentappkotlin.ui.main.listeners.BackStackChangeListener
 import com.unitbean.studentappkotlin.ui.main.presenters.MainPresenter
 import com.unitbean.studentappkotlin.ui.main.views.MainView
+import com.unitbean.studentappkotlin.ui.profile.fragments.ProfileFragment
 import com.unitbean.studentappkotlin.ui.profileHost.fragments.ProfileHostFragment
 import com.unitbean.studentappkotlin.ui.signIn.fragments.SignInFragment
 import com.unitbean.studentappkotlin.ui.splash.fragments.SplashFragment
@@ -136,9 +137,12 @@ class MainActivity : MvpAppCompatActivity(), MainView, BackStackChangeListener, 
 
     override fun onLoginSuccess(isAuth: Boolean) {
         (supportFragmentManager.primaryNavigationFragment as? ProfileHostFragment)?.let {
-            (it.childFragmentManager.primaryNavigationFragment as? SignInFragment)?.showProgress(false)
+            (it.childFragmentManager.primaryNavigationFragment as? SignInFragment)?.showProgress(false) ?:
+            (it.childFragmentManager.primaryNavigationFragment as? ProfileFragment)?.showProgress(false)
             it.updateFragment()
         } ?: (supportFragmentManager.primaryNavigationFragment as? SignInFragment)?.let {
+            it.showProgress(false)
+        } ?: (supportFragmentManager.primaryNavigationFragment as? ProfileFragment)?.let {
             it.showProgress(false)
         }
     }

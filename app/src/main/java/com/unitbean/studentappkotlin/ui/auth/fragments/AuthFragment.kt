@@ -10,7 +10,7 @@ import com.unitbean.studentappkotlin.ui.auth.presenters.AuthPresenter
 import com.unitbean.studentappkotlin.ui.auth.views.AuthView
 import com.unitbean.studentappkotlin.ui.main.activities.MainActivity
 import com.unitbean.studentappkotlin.ui.profileHost.fragments.ProfileHostFragment
-import com.unitbean.studentappkotlin.utils.repository.model.UserModel
+import com.unitbean.studentappkotlin.utils.model.UserModel
 import kotlinx.android.synthetic.main.fragment_auth_first.*
 import moxy.MvpAppCompatFragment
 import moxy.presenter.InjectPresenter
@@ -38,7 +38,17 @@ class AuthFragment : MvpAppCompatFragment(), AuthView, View.OnClickListener  {
                 if (et_auth_first_name.text.toString() == "" || et_auth_last_name.text.toString() == "" || et_auth_institute.text.toString() == "" || et_auth_course.text.toString() == "" || et_auth_group.text.toString() == "" || et_auth_recordBook.text.toString() == "") {
                     Snackbar.make(cl_auth_fragment, "Все поля должны быть заполнены", Snackbar.LENGTH_SHORT).show()
                 } else {
-                    presenter.authUser(UserModel("", et_auth_first_name.text.toString(), et_auth_last_name.text.toString(), et_auth_institute.text.toString(), et_auth_course.text.toString(), et_auth_group.text.toString(), et_auth_recordBook.text.toString()))
+                    presenter.authUser(
+                        UserModel(
+                            "",
+                            et_auth_first_name.text.toString(),
+                            et_auth_last_name.text.toString(),
+                            et_auth_institute.text.toString(),
+                            et_auth_course.text.toString(),
+                            et_auth_group.text.toString(),
+                            et_auth_recordBook.text.toString()
+                        )
+                    )
                     presenter.successLogin()
                 }
             }

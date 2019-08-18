@@ -2,9 +2,9 @@ package com.unitbean.studentappkotlin.di.modules
 
 import android.content.Context
 import android.content.SharedPreferences
-import com.unitbean.studentappkotlin.utils.repository.ApiService
-import com.unitbean.studentappkotlin.utils.repository.Preferences
-import com.unitbean.studentappkotlin.utils.repository.UserService
+import com.unitbean.studentappkotlin.repository.ApiService
+import com.unitbean.studentappkotlin.repository.Preferences
+import com.unitbean.studentappkotlin.repository.UserService
 import dagger.Module
 import dagger.Provides
 import javax.inject.Singleton

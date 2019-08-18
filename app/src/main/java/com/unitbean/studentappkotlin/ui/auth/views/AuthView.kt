@@ -1,6 +1,6 @@
 package com.unitbean.studentappkotlin.ui.auth.views
 
-import com.unitbean.studentappkotlin.utils.repository.model.UserModel
+import com.unitbean.studentappkotlin.utils.model.UserModel
 import moxy.MvpView
 import moxy.viewstate.strategy.OneExecutionStateStrategy
 import moxy.viewstate.strategy.StateStrategyType

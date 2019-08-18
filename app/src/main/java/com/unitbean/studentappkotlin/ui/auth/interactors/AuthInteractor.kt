@@ -1,7 +1,7 @@
 package com.unitbean.studentappkotlin.ui.auth.interactors
 
-import com.unitbean.studentappkotlin.utils.repository.auth.IAuthRepository
-import com.unitbean.studentappkotlin.utils.repository.model.UserModel
+import com.unitbean.studentappkotlin.repository.auth.IAuthRepository
+import com.unitbean.studentappkotlin.utils.model.UserModel
 
 class AuthInteractor (private val repository: IAuthRepository) {
     fun logout() {

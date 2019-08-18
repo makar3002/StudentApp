@@ -34,6 +34,7 @@ class SignInFragment : Fragment(), View.OnClickListener {
         }
 
     }
+
     fun showProgress(isShow: Boolean) {
         if (isShow) {
             b_vk_login.visibility = View.GONE

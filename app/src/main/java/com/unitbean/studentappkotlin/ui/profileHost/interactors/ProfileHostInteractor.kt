@@ -1,6 +1,6 @@
 package com.unitbean.studentappkotlin.ui.profileHost.interactors
 
-import com.unitbean.studentappkotlin.utils.repository.profileHost.IProfileHostRepository
+import com.unitbean.studentappkotlin.repository.profileHost.IProfileHostRepository
 
 class ProfileHostInteractor(private val repository: IProfileHostRepository) {
 

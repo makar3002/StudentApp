@@ -1,28 +1,21 @@
-package com.unitbean.studentappkotlin.ui.auth.presenters
+package com.unitbean.studentappkotlin.ui.lessonsSchedule.presentsers
 
 import com.unitbean.studentappkotlin.di.DIManager
-import com.unitbean.studentappkotlin.ui.auth.interactors.AuthInteractor
-import com.unitbean.studentappkotlin.ui.auth.views.AuthView
-import com.unitbean.studentappkotlin.utils.model.UserModel
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 import moxy.InjectViewState
 import moxy.MvpPresenter
-import javax.inject.Inject
 import kotlin.coroutines.CoroutineContext
 
+
 @InjectViewState
-class AuthPresenter : MvpPresenter<AuthView>(), CoroutineScope {
+class LessonsSchedulePresenter : MvpPresenter<>(), CoroutineScope {
 
     override val coroutineContext: CoroutineContext = Dispatchers.Main
 
-    @Inject
-    lateinit var interactor: AuthInteractor
 
     init {
-        DIManager.getAuthSubcomponent().inject(this)
+        DIManager.getLessonsScheduleSubcomponent().inject(this)
     }
 
     override fun onDestroy() {

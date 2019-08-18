@@ -44,7 +44,7 @@ class MainPresenter: MvpPresenter<MainView>(), CoroutineScope {
     fun onVkSignIn(res: VKAccessToken) {
         launch {
             //try {
-                val isSuccess = withContext(Dispatchers.Default) {interactor.onVkSignIn(res)}
+                val isSuccess = withContext(Dispatchers.Default) { interactor.onVkSignIn(res) }
                 if (isSuccess) withContext(Dispatchers.Default) { interactor.loadSavedUser() }
                 viewState.onLoginSuccess(isSuccess)
             //} catch (e: Exception) {
