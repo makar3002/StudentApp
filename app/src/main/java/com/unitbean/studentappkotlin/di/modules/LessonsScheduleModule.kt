@@ -5,6 +5,7 @@ import com.unitbean.studentappkotlin.repository.lessonsSchedule.ILessonsSchedule
 import com.unitbean.studentappkotlin.repository.lessonsSchedule.LessonsScheduleRepository
 import com.unitbean.studentappkotlin.ui.lessonsSchedule.interactors.LessonsScheduleInteractor
 import com.unitbean.studentappkotlin.repository.ApiService
+import com.unitbean.studentappkotlin.repository.ScheduleService
 import com.unitbean.studentappkotlin.repository.UserService
 import dagger.Module
 import dagger.Provides
@@ -13,8 +14,8 @@ import dagger.Provides
 class LessonsScheduleModule {
     @LessonsScheduleScope
     @Provides
-    fun provideRepository(apiService: ApiService, userService: UserService): ILessonsScheduleRepository {
-        return LessonsScheduleRepository(apiService, userService)
+    fun provideRepository(apiService: ApiService, userService: UserService, scheduleService: ScheduleService): ILessonsScheduleRepository {
+        return LessonsScheduleRepository(apiService, userService, scheduleService)
     }
 
     @LessonsScheduleScope

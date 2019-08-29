@@ -46,7 +46,8 @@ class AuthFragment : MvpAppCompatFragment(), AuthView, View.OnClickListener  {
                             et_auth_institute.text.toString(),
                             et_auth_course.text.toString(),
                             et_auth_group.text.toString(),
-                            et_auth_recordBook.text.toString()
+                            et_auth_recordBook.text.toString(),
+                            et_auth_semester.text.toString()
                         )
                     )
                     presenter.successLogin()
@@ -64,6 +65,7 @@ class AuthFragment : MvpAppCompatFragment(), AuthView, View.OnClickListener  {
             et_auth_course.setText("")
             et_auth_group.setText("")
             et_auth_recordBook.setText("")
+            et_auth_semester.setText("")
             (requireActivity() as? MainActivity)?.apply {
                 openScreen(ProfileHostFragment.TAG, isAddToBackStack = false)
                 showNavigationBar(true)
@@ -78,6 +80,7 @@ class AuthFragment : MvpAppCompatFragment(), AuthView, View.OnClickListener  {
         et_auth_course.setText(user.course)
         et_auth_group.setText(user.group)
         et_auth_recordBook.setText(user.recordBook)
+        et_auth_semester.setText(user.semester)
     }
 
     override fun onLogout() {

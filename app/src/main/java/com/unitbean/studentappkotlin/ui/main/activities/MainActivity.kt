@@ -6,7 +6,9 @@ import android.view.View
 import androidx.fragment.app.Fragment
 import com.google.android.material.snackbar.Snackbar
 import com.unitbean.studentappkotlin.R
+import com.unitbean.studentappkotlin.ui.auth.fragments.AddLessonFragment
 import com.unitbean.studentappkotlin.ui.auth.fragments.AuthFragment
+import com.unitbean.studentappkotlin.ui.lessonsSchedule.fragments.LessonsScheduleFragment
 import com.unitbean.studentappkotlin.ui.main.listeners.BackStackChangeListener
 import com.unitbean.studentappkotlin.ui.main.presenters.MainPresenter
 import com.unitbean.studentappkotlin.ui.main.views.MainView
@@ -34,9 +36,9 @@ class MainActivity : MvpAppCompatActivity(), MainView, BackStackChangeListener, 
 
         bnv_main_navigation.setOnNavigationItemSelectedListener { item ->
             return@setOnNavigationItemSelectedListener when (item.itemId) {
-                R.id.menu_events -> openScreen(ProfileHostFragment.TAG, isAddToBackStack = false)
-                R.id.menu_calendar -> openScreen(ProfileHostFragment.TAG, isAddToBackStack = false)
-                R.id.menu_partner -> openScreen(ProfileHostFragment.TAG, isAddToBackStack = false)
+                R.id.menu_news -> openScreen(ProfileHostFragment.TAG, isAddToBackStack = false)
+                R.id.menu_schedule -> openScreen(LessonsScheduleFragment.TAG, isAddToBackStack = false)
+                R.id.menu_scores -> openScreen(ProfileHostFragment.TAG, isAddToBackStack = false)
                 R.id.menu_profile -> openScreen(ProfileHostFragment.TAG,  isAddToBackStack = false)
                 else -> false
             }
@@ -58,7 +60,14 @@ class MainActivity : MvpAppCompatActivity(), MainView, BackStackChangeListener, 
                 showNavigationBar(true)
                 bnv_main_navigation!!.menu.findItem(R.id.menu_profile).isChecked = true
             }
+            is LessonsScheduleFragment -> {
+                showNavigationBar(true)
+                bnv_main_navigation!!.menu.findItem(R.id.menu_schedule).isChecked = true
+            }
             is AuthFragment -> {
+                showNavigationBar(false)
+            }
+            is AddLessonFragment -> {
                 showNavigationBar(false)
             }
 
@@ -126,6 +135,22 @@ class MainActivity : MvpAppCompatActivity(), MainView, BackStackChangeListener, 
                 supportFragmentManager.attachFragment(
                     fl_main_container.id,
                     AuthFragment.newInstance(),
+                    tag,
+                    isAddToBackStack)
+                true
+            }
+            LessonsScheduleFragment.TAG -> {
+                supportFragmentManager.attachFragment(
+                    fl_main_container.id,
+                    LessonsScheduleFragment.newInstance(),
+                    tag,
+                    isAddToBackStack)
+                true
+            }
+            AddLessonFragment.TAG -> {
+                supportFragmentManager.attachFragment(
+                    fl_main_container.id,
+                    AddLessonFragment.newInstance(),
                     tag,
                     isAddToBackStack)
                 true

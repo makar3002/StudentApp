@@ -18,7 +18,8 @@ class ProfileInteractor(private val repository: IProfileRepository) {
                 user.institute,
                 user.course,
                 user.group,
-                user.recordBook
+                user.recordBook,
+                user.semester
             )
         } else {
             val user = repository.updateUser(repository.getToken() ?: throw IllegalStateException("Token not loaded"))

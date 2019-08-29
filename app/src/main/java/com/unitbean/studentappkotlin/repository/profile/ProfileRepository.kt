@@ -9,15 +9,7 @@ class ProfileRepository(private val apiService: ApiService, private val userServ
 
     override suspend fun getUser(): UserModel? {
         userService.forceUpdateUser(apiService, userService.userToken?.userId ?: throw IllegalStateException("Token not loaded"), userService.userToken?.type ?: throw IllegalStateException("Token not loaded"))
-        return userService.user ?: UserModel(
-            "",
-            "firstName",
-            "lastName",
-            "",
-            "",
-            "",
-            ""
-        )
+        return userService.user
     }
 
     override suspend fun updateUser(token: UserTokenModel): UserModel? {

@@ -1,31 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                                             xmlns:app="http://schemas.android.com/apk/res-auto"
-                                             android:id="@+id/bottom_sheet"
-                                             android:layout_width="match_parent"
-                                             android:layout_height="140dp"
-                                             android:background="@android:color/darker_gray"
-                                             android:orientation="vertical"
-                                             app:behavior_hideable="false"
-                                             app:behavior_peekHeight="80dp"
-                                             app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior">
+                                                   xmlns:app="http://schemas.android.com/apk/res-auto"
+                                                   xmlns:tools="http://schemas.android.com/tools"
+                                                   android:id="@+id/bottom_sheet"
+                                                   android:layout_width="match_parent"
+                                                   android:layout_height="wrap_content"
+                                                   android:orientation="vertical"
+                                                   app:behavior_hideable="false"
+                                                   app:behavior_peekHeight="88dp"
+                                                   app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior">
+
+    <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="8dp"
+            android:layout_height="8dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+
+            app:srcCompat="@drawable/ic_vector_date_circle" />
 
     <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_date_line"
             android:layout_width="match_parent"
             android:layout_height="80dp"
-            android:background="@android:color/holo_blue_light"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager">
-    </androidx.recyclerview.widget.RecyclerView>
+            android:background="#D8D8D8"
+            android:clipToPadding="false"
+            app:layout_constraintTop_toBottomOf="@id/imageView"
+            tools:listitem="@layout/rv_date_item"
+            ></androidx.recyclerview.widget.RecyclerView>
 
     <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_month_line"
             android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:background="@android:color/darker_gray"
+            android:layout_height="wrap_content"
+            android:background="#BEBCBC"
             app:layout_constraintTop_toBottomOf="@+id/rv_date_line"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager">
-    </androidx.recyclerview.widget.RecyclerView>
+            tools:listitem="@layout/rv_month_item"></androidx.recyclerview.widget.RecyclerView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

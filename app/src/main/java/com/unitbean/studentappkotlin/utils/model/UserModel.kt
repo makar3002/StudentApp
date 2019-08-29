@@ -7,5 +7,6 @@ data class UserModel(
     val institute: String,
     val course: String,
     val group: String,
-    val recordBook: String
+    val recordBook: String,
+    val semester: String
 )

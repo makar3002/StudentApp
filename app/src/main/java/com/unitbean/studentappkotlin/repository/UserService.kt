@@ -31,7 +31,7 @@ class UserService(private val prefs: SharedPreferences,
                          user: UserModel
     ) {
         this@UserService.user = user
-        firebaseApi.changeUser(user.id, user.firstName, user.lastName, user.institute, user.course, user.group, user.recordBook)
+        firebaseApi.changeUser(user.id, user.firstName, user.lastName, user.institute, user.course, user.group, user.recordBook, user.semester)
     }
 
     fun restoreUserToken(): UserTokenModel? {
@@ -89,12 +89,12 @@ class UserService(private val prefs: SharedPreferences,
             institute,
             course,
             group,
-            recordBook
+            recordBook,
+            semester
         )
     }
 
     companion object {
         private const val SAVED_USER = "saved_user_v2"
-        private const val SAVED_EVENTS = "saved_events"
     }
 }

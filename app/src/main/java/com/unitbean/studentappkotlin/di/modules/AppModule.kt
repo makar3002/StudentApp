@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.SharedPreferences
 import com.unitbean.studentappkotlin.repository.ApiService
 import com.unitbean.studentappkotlin.repository.Preferences
+import com.unitbean.studentappkotlin.repository.ScheduleService
 import com.unitbean.studentappkotlin.repository.UserService
 import dagger.Module
 import dagger.Provides
@@ -36,6 +37,15 @@ class AppModule {
             editor: SharedPreferences.Editor
         ): UserService {
             return UserService(prefs, editor)
+        }
+
+        @Provides
+        @Singleton
+        fun provideScheduleService(
+            prefs: SharedPreferences,
+            editor: SharedPreferences.Editor
+        ): ScheduleService {
+            return ScheduleService(prefs, editor)
         }
 
         @Provides

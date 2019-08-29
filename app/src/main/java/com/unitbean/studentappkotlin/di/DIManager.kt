@@ -7,6 +7,7 @@ object DIManager {
 
     lateinit var appComponent: AppComponent
     private var mainSubcomponent: MainSubcomponent? = null
+    private var addLessonSubcomponent: AddLessonSubcomponent? = null
     private var profileSubcomponent: ProfileSubcomponent? = null
     private var profileHostSubcomponent: ProfileHostSubcomponent? = null
     private var authSubcomponent: AuthSubcomponent? = null
@@ -22,6 +23,17 @@ object DIManager {
 
     fun clearMainSubcomponent() {
         mainSubcomponent = null
+    }
+
+    fun getAddLessonSubcomponent(): AddLessonSubcomponent {
+        if (addLessonSubcomponent == null) {
+            addLessonSubcomponent = appComponent.addLesson(AddLessonModule())
+        }
+        return addLessonSubcomponent ?: throw IllegalStateException("$addLessonSubcomponent must not be null")
+    }
+
+    fun clearAddLessonSubcomponent() {
+        addLessonSubcomponent = null
     }
 
     fun getLessonsScheduleSubcomponent(): LessonsScheduleSubcomponent {

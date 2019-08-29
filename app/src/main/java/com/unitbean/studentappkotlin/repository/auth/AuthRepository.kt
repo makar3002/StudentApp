@@ -27,7 +27,8 @@ class AuthRepository(private val apiService: ApiService,
                     user.institute,
                     user.course,
                     user.group,
-                    user.recordBook
+                    user.recordBook,
+                    user.semester
                 )
             )
         } else {
@@ -43,7 +44,8 @@ class AuthRepository(private val apiService: ApiService,
                     user.institute,
                     user.course,
                     user.group,
-                    user.recordBook
+                    user.recordBook,
+                    user.semester
                 )
             )
         }
