@@ -151,7 +151,7 @@ class LinearWithoutDecorationsSnapHelper : SnapHelper(){
                 layoutManager.getChildAt(0)!!.callOnClick()
                 return layoutManager.getChildAt(0)
             } else if (layoutManager.findLastCompletelyVisibleItemPosition() == layoutManager.itemCount - 1) {
-                //layoutManager.getChildAt(layoutManager.itemCount - 1)!!.callOnClick()
+                layoutManager.getChildAt(layoutManager.itemCount - 1)!!.callOnClick()
                 return layoutManager.getChildAt(layoutManager.itemCount - 1)
             }
         }

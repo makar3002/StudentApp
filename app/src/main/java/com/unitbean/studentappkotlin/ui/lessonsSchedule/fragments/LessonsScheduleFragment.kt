@@ -29,6 +29,8 @@ import kotlinx.android.synthetic.main.fragment_lessons_schedule.*
 import kotlinx.coroutines.plus
 import moxy.MvpAppCompatFragment
 import moxy.presenter.InjectPresenter
+import java.util.*
+import kotlin.collections.ArrayList
 
 class LessonsScheduleFragment : MvpAppCompatFragment(), LessonsScheduleView, TransitionClickListener  {
 
@@ -72,12 +74,13 @@ class LessonsScheduleFragment : MvpAppCompatFragment(), LessonsScheduleView, Tra
         rv_month_line.setHasFixedSize(true)
         rv_month_line.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
         rv_month_line.adapter = monthsAdapter
-
         rv_lessons_list.setHasFixedSize(true)
         rv_lessons_list.adapter = lessonsAdapter
         srl_lessons_updater.setOnRefreshListener {
             presenter.loadLessons()
         }
+
+        retainInstance
 
         postponeEnterTransition()
 
@@ -96,6 +99,14 @@ class LessonsScheduleFragment : MvpAppCompatFragment(), LessonsScheduleView, Tra
             R.id.ll_date_item -> {
                 val model = presenter.dates[position] as DateViewModel
                 (snapHelper as SnapHelper).smoothScrollToPosition(position)
+                var monthPosition: Int = 0
+                var monthModel = presenter.months[0] as DateViewModel
+                for (i in 1 until presenter.months.size - 1)
+                    if (model.date.month != monthModel.date.month) monthModel = presenter.months[i] as DateViewModel else {
+                        monthPosition = i - 1
+                        break
+                    }
+                rv_month_line.layoutManager?.scrollToPosition(monthPosition)
                 presenter.setCurrentDate(model.date)
                 presenter.loadLessons(model.date)
             }
